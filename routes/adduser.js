@@ -27,17 +27,15 @@ router.post('/', function(req, res, next) {
         });
     });
 
-    /*
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("ttt");
-        var myobj = { name: "Company Inc", address: "Highway 37" };
+        var myobj = { name: name, password: pwd, email: email, disabled: true };
         dbo.collection("users").insertOne(myobj, function(err, res) {
             if (err) throw err;
-            console.log("1 document inserted");
+            console.log("New user added");
             db.close();
         });
     });
-    */
 });
 
