@@ -3,16 +3,15 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="stylesheets/style.css">
-    <title>Tic-Tac-Toe game</title>
+    <title>Tic-Tac-Toe game with login</title>
 </head>
 <body>
-<form method="post">
-    <div class = "nicetext">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
-    </div>
 
+<form action="/action_page.php" method="post" target="_blank">
+    UserName: <input type="text" name="name"><br>
+    Password: <input type="text" name="password"><br>
+    Email: <input type="text" name="email"><br>
+    <input type="submit" value="Submit">
 </form>
-
 </body>
 </html>

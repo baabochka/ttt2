@@ -7,6 +7,7 @@ var hbs = require( 'express-handlebars');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var tttRouter = require( './routes/ttt');
+var adduserRouter = require( './routes/adduser');
 
 var app = express();
 
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/ttt', tttRouter);
+app.use('/adduser', adduserRouter);
 
 // view engine setup
 app.set('view engine', 'hbs');
