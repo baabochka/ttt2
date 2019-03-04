@@ -42,6 +42,8 @@ router.post('/', function(req, res, next) {
                 db.close();
             });
         });
+    } else {
+        console.log("Cannot add new user: user already exists.")
     }
 });
 
