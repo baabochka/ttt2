@@ -29,7 +29,7 @@ router.post('/', function(req, res, next) {
         //     }
         //     db.close();
         // });
-        db.users.count(query)
+        dbo.collection("users").count(query)
             .then ((count) => {
             if (count > 0) {
                 console.log("User found.");
