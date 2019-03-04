@@ -21,15 +21,23 @@ router.post('/', function(req, res, next) {
         if (err) throw err;
         var dbo = db.db("ttt");
         var query = { name: name };
-        dbo.collection("users").find(query).toArray(function(err, result) {
-            if (err) throw err;
-            console.log(result);
-            if (result !== null) {
+        // dbo.collection("users").find(query).toArray(function(err, result) {
+        //     if (err) throw err;
+        //     console.log(result);
+        //     if (result !== null) {
+        //         found = true;
+        //     }
+        //     db.close();
+        // });
+        db.users.count(query)
+            .then ((count) => {
+            if (count > 0) {
+                console.log("User found.");
                 found = true;
+            } else {
+                console.log("User NOT found.");
             }
-            db.close();
         });
-    });
 
     if (found === false) {
         MongoClient.connect(url, function (err, db) {
