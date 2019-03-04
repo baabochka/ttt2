@@ -38,7 +38,7 @@ router.post('/', function(req, res, next) {
                 console.log("User NOT found.");
             }
         });
-
+    });
     if (found === false) {
         MongoClient.connect(url, function (err, db) {
             if (err) throw err;
