@@ -31,7 +31,7 @@ router.post('/', function(req, res, next) {
                 dbo.collection("users").insertOne(myobj, function (err, res) {
                     if (err) throw err;
                     console.log("New user added");
-                    res.sendfile('public/verifpage.html');
+                    req.sendfile('public/verifpage.html');
                     db.close();
                 });
             }
