@@ -23,7 +23,7 @@ var logoutRouter = require( './routes/logout');
 var getgameRouter = require( './routes/getgame');
 var getscoreRouter = require( './routes/getscore');
 var listgamesRouter = require( './routes/listgames');
-var playRouter = require( './routes/play');
+// var playRouter = require( './routes/play');
 
 var app = express();
 
@@ -43,7 +43,7 @@ app.use('/logout', logoutRouter);
 app.use('/verify', verifyRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
-app.use('/play', playRouter);
+// app.use('/play', playRouter);
 
 // view engine setup
 app.set('view engine', 'hbs');
