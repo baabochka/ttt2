@@ -14,14 +14,14 @@ router.post('/', function(req, res, next) {
 
     let us_id = user._id //get id
 
-    User.find({games: }, function(err, games) {
-        if (err) {
-            res.json({status: 'ERROR'});
-            return console.log(err);
-        }
-
-        res.json({status:'OK', games:[ {id:, start_date:}, …] })
-
-    });
+    // User.find({games: }, function(err, games) {
+    //     if (err) {
+    //         res.json({status: 'ERROR'});
+    //         return console.log(err);
+    //     }
+    //
+    //     res.json({status:'OK', games:[ {id:, start_date:}, …] })
+    //
+    // });
 
 });
