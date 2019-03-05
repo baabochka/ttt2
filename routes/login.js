@@ -5,7 +5,7 @@ module.exports = router;
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.send('respond with a resource');
+    res.sendfile('public/tttlogin.html');
 });
 router.post('/', function(req, res, next) {
     let username = req.body.username;

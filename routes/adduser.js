@@ -7,7 +7,7 @@
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.sendfile('public/tttname.html');
+    //res.sendfile('public/tttname.html');
 });
 router.post('/', function(req, res, next) {
 
@@ -69,7 +69,7 @@ router.post('/', function(req, res, next) {
                 //     if (err) throw err;
                 //     console.log("New user added");
                 //
-                //     // req.sendfile('public/verifpage.html');
+                //     req.sendfile('public/verifpage.html');
                 //     db.close();
                 // });
             }
