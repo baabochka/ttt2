@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Users = require('../models/Users');
-module.exports = router;
+var mongoStore = require('../mongoSess');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -15,3 +15,4 @@ router.post('/', function(req, res, next) {
     res.clearCookie('tictactoe');
     res.json({status: 'OK'});
 });
+module.exports = router;
