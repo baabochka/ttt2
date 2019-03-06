@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const Users = require('../models/Users');
 module.exports = router;
+var mongoStore = require('../mongoSess');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -9,10 +10,15 @@ router.get('/', function(req, res, next) {
 });
 router.post('/', function(req, res, next) {
     let username = req.body.username;
-    let pwd = req.body.pwd;
-
+    let pwd = req.body.password;
+    console.log("I got " + username + " and " + pwd + " Lets find it in database");
     Users.findOne({username: username, password: pwd}, function(err, user) {
-        if (err) {
+        console.log("I got this user: " + user);
+        if (user === null) {
+            res.json({status: 'ERROR'});
+            return console.log(err);
+        }
+        else if (err) {
             res.json({status: 'ERROR'});
             return console.log(err);
         } else if (user.active !== 'Active' || !user) {
@@ -21,7 +27,9 @@ router.post('/', function(req, res, next) {
         }
 
         let prev_sess = user.sess_id;
+        console.log("Previous session here: " + prev_sess);
         user.sid = req.sessionID;
+        console.log("req.sessionID: " + user.sid);
         req.session.userID = user._id;
         if (prev_sess) {
             mongoStore.get(prev_sess, function(err, session){

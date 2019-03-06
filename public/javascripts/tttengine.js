@@ -1,7 +1,7 @@
 var table;
 var winner = false;
 function make_move(num) {
-    console.log(num);
+    console.log($("#" + num));
     if (winner) return;
     // $("#" + num);
     // $("#" + num).text("O");
@@ -12,7 +12,7 @@ function make_move(num) {
     $.ajax({
         method: "POST",
         url: "/ttt/play",
-        data: JSON.stringify({move: $("#" + num)}),
+        data: JSON.stringify({move: num}),
         contentType: 'application/json; charset=UTF-8',
         success: response
     });

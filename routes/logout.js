@@ -12,6 +12,6 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     if(!req.session.userId) return res.json({status: 'ERROR'});
-    res.clearCookie('ttt2');
+    res.clearCookie('tictactoe');
     res.json({status: 'OK'});
 });

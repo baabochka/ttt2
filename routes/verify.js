@@ -5,7 +5,7 @@ module.exports = router;
 
 
 router.post('/', function(req, res, next) {
-    let user_key = req.body.user_key;
+    let user_key = req.body.key;
     let email = req.body.email;
 
     verify(user_key, email).then(function(value){
@@ -17,7 +17,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-    let user_key = req.query.user_key;
+    let user_key = req.query.key;
     let email = req.query.email;
 
     verify(user_key, email).then(function(value){
@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-async function verify(user_key, user_email) {
+async function verify(key, user_email) {
     let found = false;
     await Users.find({email: user_email}, function (err, users) {
         if (err) console.error(err);
@@ -41,7 +41,7 @@ async function verify(user_key, user_email) {
                 users[i].active = 'Active';
                 users[i].save(function (err, newUser) {
                     if (err) throw err;
-                    console.log(newUser.username + " has been verificated.");
+                    console.log(newUser.username + " has been verified.");
                 });
                 found = true;
             }
