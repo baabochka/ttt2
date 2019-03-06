@@ -5,10 +5,9 @@ const Users = new mongoose.Schema({
     password: String,
     email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
     active: {type: String, default: "Inactive"},
-    games: {type: [{id:Number, start_date:String}], default: []},
+    games: {type: [{id:Number, start_date:String, grid: [String], winner: String}], default: []},
     scores: {type: [ Number ], default: [0, 0, 0] },
-    sess_id: String,
-    grid: []
+    sess_id: String
 });
 
 module.exports = mongoose.model('Users', Users);
