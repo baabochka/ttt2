@@ -61,9 +61,11 @@ async function verify(key, user_email) {
 
                 });
                 found = true;
+                return new Promise(resolve => {resolve(found);});
             }
         }
     });
+    // console.log("Result = " + result);
     if (result === null) {
         console.log("User not found!")
         // found = false;
