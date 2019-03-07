@@ -31,6 +31,7 @@ router.post('/', function (req, res, next) {
             .then((count) => {
                 if (count > 0) {
                     console.log("User found.");
+                    res.json({status: 'ERROR'});
                     db.close();
                 } else {
                     console.log("User NOT found.");
