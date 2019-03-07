@@ -16,6 +16,7 @@ router.post('/', function(req, res, next) {
     console.log(req.body);
     console.log("========================");
     console.log("               ");
+    console.log("session.userid "+req.session.userId);
     if(!req.session.userId) {
         console.log("               ");
         console.log("=======================");
