@@ -47,13 +47,13 @@ router.post('/', function (req, res, next) {
                         service: 'yahoo',
                         secure: false,
                         auth: {
-                            user: 'smartypantsttt@yahoo.com',
-                            pass: 'shmartyparty'
+                            user: 'pnatashka@yahoo.com',
+                            pass: 'skakalka88'
                         }
                     });
                     console.log("====  " + newUser.email);
                     let mailOptions = {
-                        from: 'smartypantsttt@yahoo.com',
+                        from: 'pnatashka@yahoo.com',
                         to: newUser.email,
                         subject: 'Tic Tac Toe account verification',
                         text: 'Please follow this link to verify your account http://localhost:3000/verify?email=' + newUser.email + "&user_key=" + newUser.active
