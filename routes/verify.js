@@ -53,14 +53,14 @@ async function verify(key, user_email) {
             if (users[i].active === 'Active') {
                 console.log(users[i]+ ' already has been activated');
             } else if (key === 'abracadabra' || users[i].active === key) {
-                console.log(users[i]);
                 users[i].active = 'Active';
+                found = true;
+                console.log(users[i]);
                 users[i].save(function (err, newUser) {
                     if (err) throw err;
                     console.log(newUser.username + " has been verified.");
 
                 });
-                found = true;
                 return new Promise(resolve => {resolve(found);});
             }
         }
