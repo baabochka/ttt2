@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
     console.log("               ");
     console.log("=======================");
-    console.log(req);
+    console.log(req.body);
     console.log("========================");
     console.log("               ");
     let usID = req.session.userID;
