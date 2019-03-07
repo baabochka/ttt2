@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
     res.sendfile('public/tttname.html');
 });
 router.post('/', function (req, res, next) {
-    onsole.log("               ");
+    console.log("               ");
     console.log("=======================");
     console.log(req.body);
     console.log("========================");
