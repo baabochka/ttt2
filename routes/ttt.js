@@ -9,9 +9,13 @@ router.get('/', function (req, res, next) {
     res.sendfile('public/tttname.html');
 });
 router.post('/', function (req, res, next) {
+    onsole.log("               ");
+    console.log("=======================");
+    console.log(req);
+    console.log("========================");
+    console.log("               ");
 
     var name = req.body.name;
-
 
     var today = new Date();
     var dd = today.getDate();
@@ -30,9 +34,14 @@ router.post('/', function (req, res, next) {
     res.render('tttboard', {name: name, date: today});
 });
 router.post('/play', function (req, res, next) {
+    console.log("               ");
+    console.log("=======================");
+    console.log(req);
+    console.log("========================");
+    console.log("               ");
     let move = req.body.move;
     console.log("User's move: " + move);
-    console.log("1" + req.session.grid);
+    // console.log("1" + req.session.grid);
 
     if (!req.session.grid) {
         req.session.grid = [];
@@ -43,14 +52,18 @@ router.post('/play', function (req, res, next) {
     let table = req.session.grid;
 
     if (move === null || move === undefined) {
+        console.log("               ");
+        console.log("=======================");
         res.json({grid: table, winner: wnr});
+        console.log("========================");
+        console.log("               ");
         return;
     }
     table[move] = mike;
     // req.session.grid = table;
 
     checkwin(table, mike);
-    console.log("2" + table + wnr);
+    // console.log("2" + table + wnr);
     if (wnr === mike) {
         let usID = req.session.userID;
         let tmp_grid = [];
@@ -61,7 +74,11 @@ router.post('/play', function (req, res, next) {
         let tmp_wnr = wnr;
         Users.findById(usID, function (err, user) {
             if (err) {
+                console.log("               ");
+                console.log("=======================");
                 res.json({status: 'ERROR'});
+                console.log("========================");
+                console.log("               ");
                 return console.log(err);
             } else {
                 user.scores = [user.scores[0]+1, user.scores[1], user.scores[2]];
@@ -70,13 +87,17 @@ router.post('/play', function (req, res, next) {
                 user.save();
             }
         });
-
+        console.log("               ");
+        console.log("=======================");
         res.json({grid: table, winner: wnr});
+        console.log("========================");
+        console.log("               ");
+
         for (let i = 0; i < 9; i++) {
             req.session.grid[i] = " ";
         }
         wnr = undefined;
-        console.log("3" + req.session.grid);
+        // console.log("3" + req.session.grid);
         mongoStore.set(req.sessionID, req.session);
         return;
     }
@@ -98,7 +119,11 @@ router.post('/play', function (req, res, next) {
         }
         Users.findById(usID, function (err, user) {
             if (err) {
+                console.log("               ");
+                console.log("=======================");
                 res.json({status: 'ERROR'});
+                console.log("========================");
+                console.log("               ");
                 return console.log(err);
             } else {
                 user.scores = [user.scores[0], user.scores[1]+1, user.scores[2]];
@@ -108,8 +133,12 @@ router.post('/play', function (req, res, next) {
         });
     }
     checkwin(table, me);
-
+    console.log("               ");
+    console.log("=======================");
     res.json({grid: table, winner: wnr});
+    console.log("========================");
+    console.log("               ");
+
     if (wnr !== undefined) {
         if (wnr === me) {
             let usID = req.session.userID;
@@ -120,7 +149,11 @@ router.post('/play', function (req, res, next) {
             }
             Users.findById(usID, function (err, user) {
                 if (err) {
+                    console.log("               ");
+                    console.log("=======================");
                     res.json({status: 'ERROR'});
+                    console.log("========================");
+                    console.log("               ");
                     return console.log(err);
                 } else {
                     user.scores = [user.scores[0], user.scores[1], user.scores[2]+1];
@@ -134,7 +167,7 @@ router.post('/play', function (req, res, next) {
         }
         wnr = undefined;
     }
-    console.log("4" + req.session.grid);
+    // console.log("4" + req.session.grid);
     mongoStore.set(req.sessionID, req.session);
 });
 

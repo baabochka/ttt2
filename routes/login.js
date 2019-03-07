@@ -8,20 +8,37 @@ router.get('/', function(req, res, next) {
     res.sendfile('public/tttlogin.html');
 });
 router.post('/', function(req, res, next) {
+    console.log("               ");
+    console.log("=======================");
+    console.log(req);
+    console.log("========================");
+    console.log("               ");
     let username = req.body.username;
     let pwd = req.body.password;
     console.log("I got " + username + " and " + pwd + " Lets find it in database");
     Users.findOne({username: username, password: pwd}, function(err, user) {
         console.log("I got this user: " + user);
         if (user === null) {
+            console.log("               ");
+            console.log("=======================");
             res.json({status: 'ERROR'});
+            console.log("========================");
+            console.log("               ");
             return console.log(err);
         }
         else if (err) {
+            console.log("               ");
+            console.log("=======================");
             res.json({status: 'ERROR'});
+            console.log("========================");
+            console.log("               ");
             return console.log(err);
         } else if (user.active !== 'Active' || !user) {
+            console.log("               ");
+            console.log("=======================");
             res.json({status: 'ERROR'});
+            console.log("========================");
+            console.log("               ");
             return console.log(err);
         }
 
@@ -41,18 +58,15 @@ router.post('/', function(req, res, next) {
                 });
             });
         }
+        console.log("               ");
+        console.log("=======================");
         res.json({status: 'OK'});
+        console.log("========================");
+        console.log("               ");
     });
 
 });
 
 
-//logout
-
-router.post('/', function(req, res, next) {
-    if(!req.session.userId) return res.json({status: 'ERROR'});
-    res.clearCookie('ttt2');
-    res.json({status: 'OK'});
-});
 
 module.exports = router;
