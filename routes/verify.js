@@ -59,6 +59,7 @@ async function verify(key, user_email) {
                 users[i].save(function (err, newUser) {
                     if (err) throw err;
                     console.log(newUser.username + " has been verified.");
+
                 });
                 found = true;
             }
