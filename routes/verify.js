@@ -65,7 +65,7 @@ async function verify(key, user_email) {
             }
         }
     });
-    console.log("Result = " + result);
+    console.log("Result = " + result.active);
     if (result === null) {
         console.log("User not found!")
         // found = false;
