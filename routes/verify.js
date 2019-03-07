@@ -20,6 +20,7 @@ router.post('/', function (req, res, next) {
                 if (err) throw err;
                 console.log(user.username + " has been verified.");
             });
+            req.session.userID = user._id;
             res.json({status: "OK"})
         } else
             res.json({status:"ERROR"});
