@@ -21,7 +21,8 @@ router.post('/', function (req, res, next) {
                 console.log(user.username + " has been verified.");
             });
             res.json({status: "OK"})
-        }
+        } else
+            res.json({status:"ERROR"});
     });
 });
 

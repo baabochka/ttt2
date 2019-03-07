@@ -23,6 +23,7 @@ router.post('/', function(req, res, next) {
         res.json({status: 'ERROR'});
         console.log("========================");
         console.log("               ");
+        res.json({status: 'ERROR'});
         return console.log('ERROR');
     }
     res.clearCookie('tictactoe');
