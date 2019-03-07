@@ -41,8 +41,8 @@ router.post('/', function (req, res, next) {
                         if (err) throw err;
                         console.log("New user added");
                     });
-                    console.log("Creating transporter...");
-                    let transporter = nodemailer.createTransport({
+                    //console.log("Creating transporter...");
+                    /*let transporter = nodemailer.createTransport({
                         service: "Yahoo",
                         port: 465,
                         service: 'yahoo',
@@ -58,8 +58,8 @@ router.post('/', function (req, res, next) {
                         to: newUser.email,
                         subject: 'Tic Tac Toe account verification',
                         text: 'Please follow this link to verify your account http://localhost:3000/verify?email=' + newUser.email + "&user_key=" + newUser.active
-                    };
-                    transporter.sendMail(mailOptions, function (err, info) {
+                    };*/
+                    /*transporter.sendMail(mailOptions, function (err, info) {
                         if (err) {
                             console.log("               ");
                             console.log("=======================");
@@ -68,22 +68,13 @@ router.post('/', function (req, res, next) {
                             console.log("               ");
                             return console.log(err)
                         }
-                        console.log('Email %s has been sent: %s', info.messageId, info.response);
-                        console.log("               ");
-                        console.log("=======================");
-                        res.json({status: 'OK'});
-                        console.log("=======================");
-                        console.log("               ");
-                    });
-
-                    // var myobj = {username: username, password: pwd, email: email, active: false};
-                    // dbo.collection("users").insertOne(myobj, function (err, res) {
-                    //     if (err) throw err;
-                    //     console.log("New user added");
-                    //
-                    //     req.sendfile('public/verifpage.html');
-                    //     db.close();
-                    // });
+                    });*/
+                    //console.log('Email %s has been sent: %s', info.messageId, info.response);
+                    console.log("               ");
+                    console.log("=======================");
+                    res.json({status: 'OK'});
+                    console.log("=======================");
+                    console.log("               ");
                 }
             });
     });
