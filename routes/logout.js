@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
 //logout
 
 router.post('/', function (req, res, next) {
-    console.log("session.userid " + req.session.userId);
+    console.log("session.userid " + req.session);
     if (!req.session.userId) {
         console.log("               ");
         console.log("=======================");
