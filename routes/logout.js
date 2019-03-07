@@ -22,7 +22,7 @@ router.post('/', function(req, res, next) {
         res.json({status: 'ERROR'});
         console.log("========================");
         console.log("               ");
-        return console.log(err);
+        return console.log('ERROR');
     }
     res.clearCookie('tictactoe');
     console.log("               ");
