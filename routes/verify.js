@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
 router.get('/', function(req, res, next) {
     console.log("               ");
     console.log("=======================");
-    console.log(req);
+    console.log(req.body);
     console.log("========================");
     console.log("               ");
     let user_key = req.query.key;
@@ -49,7 +49,7 @@ router.get('/', function(req, res, next) {
 async function verify(key, user_email) {
     console.log("               ");
     console.log("=======================");
-    console.log(req);
+    console.log(req.body);
     console.log("========================");
     console.log("               ");    let found = false;
     await Users.find({email: user_email}, function (err, users) {
