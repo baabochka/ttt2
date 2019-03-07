@@ -47,7 +47,7 @@ router.get('/', function(req, res, next) {
 
 async function verify(key, user_email) {
     let found = false;
-    await Users.find({email: user_email}, function (err, users) {
+    let result = await Users.find({email: user_email}, function (err, users) {
         if (err) console.error(err);
         for (let i = 0; i < users.length; i++) {
             if (users[i].active === 'Active') {
@@ -65,5 +65,11 @@ async function verify(key, user_email) {
         }
     });
     console.log("verification of user: found = " + found);
+    if (result === null) {
+        console.log("User not found!")
+        found = false;
+    } else {
+        found = true;
+    }
     return found;
 }
