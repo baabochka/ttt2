@@ -11,8 +11,24 @@ router.get('/', function(req, res, next) {
 //logout
 
 router.post('/', function(req, res, next) {
-    if(!req.session.userId) return res.json({status: 'ERROR'});
+    console.log("               ");
+    console.log("=======================");
+    console.log(req);
+    console.log("========================");
+    console.log("               ");
+    if(!req.session.userId) {
+        console.log("               ");
+        console.log("=======================");
+        res.json({status: 'ERROR'});
+        console.log("========================");
+        console.log("               ");
+        return console.log(err);
+    }
     res.clearCookie('tictactoe');
+    console.log("               ");
+    console.log("=======================");
     res.json({status: 'OK'});
+    console.log("========================");
+    console.log("               ");
 });
 module.exports = router;

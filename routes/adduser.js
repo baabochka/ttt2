@@ -12,7 +12,11 @@ router.get('/', function (req, res, next) {
     //res.sendfile('public/tttname.html');
 });
 router.post('/', function (req, res, next) {
-
+    console.log("               ");
+    console.log("=======================");
+    console.log(req);
+    console.log("========================");
+    console.log("               ");
     var username = req.body.username;
     var pwd = req.body.password;
     var email = req.body.email;
@@ -56,11 +60,19 @@ router.post('/', function (req, res, next) {
                     };
                     transporter.sendMail(mailOptions, function (err, info) {
                         if (err) {
+                            console.log("               ");
+                            console.log("=======================");
                             res.json({status: 'ERROR'});
+                            console.log("=======================");
+                            console.log("               ");
                             return console.log(err)
                         }
                         console.log('Email %s has been sent: %s', info.messageId, info.response);
+                        console.log("               ");
+                        console.log("=======================");
                         res.json({status: 'OK'});
+                        console.log("=======================");
+                        console.log("               ");
                     });
 
                     // var myobj = {username: username, password: pwd, email: email, active: false};
