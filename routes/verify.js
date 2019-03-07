@@ -45,8 +45,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
-
-async function verify(key, user_email) {
+function verify(key, user_email) {
     let found = false;
     await Users.find({email: user_email}, function (err, users) {
         if (err) console.error(err);
