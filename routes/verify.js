@@ -67,9 +67,15 @@ async function verify(key, user_email) {
     console.log("verification of user: found = " + found);
     if (result === null) {
         console.log("User not found!")
-        found = false;
+        // found = false;
     } else {
-        found = true;
+        console.log("User has been found");
+        if (found) {
+            console.log("User has been verified");
+        } else {
+            console.log("User has NOT been verified");
+        }
+        // found = true;
     }
     return found;
 }
