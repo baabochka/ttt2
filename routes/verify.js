@@ -65,6 +65,6 @@ async function verify(key, user_email) {
             }
         }
     });
-
+    console.log("verification of user: found = " + found);
     return found;
 }
