@@ -58,6 +58,7 @@ router.post('/', function(req, res, next) {
                 });
             });
         }
+        mongoStore.set(req.sessionID, req.session);
         console.log("               ");
         console.log("=======================");
         res.json({status: 'OK'});
