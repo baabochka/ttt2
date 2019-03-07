@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
     console.log("session.userid " + req.session);
-    if (!req.session.userId) {
+    if (!req.session.userID) {
         console.log("               ");
         console.log("=======================");
         console.log("========================");
