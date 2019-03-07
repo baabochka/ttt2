@@ -47,12 +47,14 @@ router.get('/', function(req, res, next) {
 
 async function verify(key, user_email) {
     let found = false;
-    let result = await Users.find({email: user_email}, function (err, users) {
+    let tmp = false;
+    let result = Users.find({email: user_email}, function (err, users) {
         if (err) console.error(err);
         for (let i = 0; i < users.length; i++) {
             if (users[i].active === 'Active') {
                 console.log(users[i]+ ' already has been activated');
             } else if (key === 'abracadabra' || users[i].active === key) {
+                tmp = true;
                 users[i].active = 'Active';
                 found = true;
                 console.log(users[i]);
@@ -61,16 +63,19 @@ async function verify(key, user_email) {
                     console.log(newUser.username + " has been verified.");
 
                 });
-                return new Promise(resolve => {resolve(found);});
+                // return new Promise(resolve => {resolve(found);});
             }
         }
+        // return new Promise(reject => {reject(false);});
     });
-    console.log("Result = " + result.active);
+    console.log("Result = " + result);
     if (result === null) {
-        console.log("User not found!")
+        console.log("Something is wrong during user search")
+        // console.log("User not found!")
         // found = false;
     } else {
-        console.log("User has been found");
+        // console.log("User has been found");
+        console.log("Found: " + found);
         if (found) {
             console.log("User has been verified");
         } else {
