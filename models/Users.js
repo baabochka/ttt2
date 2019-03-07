@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Users = new mongoose.Schema({
     username: {type: String, unique: true, required: [true, "can't be blank"], match: [/^[a-zA-Z0-9]+$/, 'is invalid'], index: true},
     password: String,
-    email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
+    email: {type: String, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
     active: {type: String, default: "Inactive"},
     games: {type: [{id:Number, start_date:String, grid: [String], winner: String}], default: []},
     scores: {type: [ Number ], default: [0, 0, 0] },
