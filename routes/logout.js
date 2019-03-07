@@ -15,7 +15,6 @@ router.post('/', function (req, res, next) {
     if (!req.session.userId) {
         console.log("               ");
         console.log("=======================");
-        res.json({status: 'ERROR'});
         console.log("========================");
         console.log("               ");
         res.json({status: 'ERROR'});
