@@ -4,85 +4,51 @@ const Users = require('../models/Users');
 module.exports = router;
 
 
-router.post('/', function(req, res, next) {
-    let user_key = req.body.key;
+router.post('/', function (req, res, next) {
+    let key = req.body.key;
     let email = req.body.email;
+    let query = Users.findOne({email: email});
 
-    verify(user_key, email).then(function(value){
-        if (value)
-            res.json({status: "OK"});
-        else
-            res.json({status: "ERROR"});
+    query.then(function (user) {
+        if (user.active === 'Active') {
+            console.log(user + ' already has been activated');
+            res.json({status: "ERROR"})
+        } else if (key === 'abracadabra' || user.active === key) {
+            user.active = 'Active';
+            console.log(user);
+            user.save(function (err, user) {
+                if (err) throw err;
+                console.log(user.username + " has been verified.");
+            });
+            res.json({status: "OK"})
+        }
     });
 });
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     console.log("               ");
     console.log("=======================");
     console.log(req.body);
     console.log("========================");
     console.log("               ");
-    let user_key = req.query.key;
+    let key = req.query.key;
     let email = req.query.email;
+    let query = Users.findOne({email: email});
 
-    verify(user_key, email).then(function(value){
-        if (value){
-            console.log("               ");
-            console.log("=======================");
-            res.json({status: "OK"});
-            console.log("========================");
-            console.log("               ");
-
-        }
-        else{
-            console.log("               ");
-            console.log("=======================");
-            res.json({status: "ERROR"});
-            console.log("========================");
-            console.log("               ");
-
+    query.then(function (user) {
+        if (user.active === 'Active') {
+            console.log(user + ' already has been activated');
+            res.json({status: "ERROR"})
+        } else if (key === 'abracadabra' || user.active === key) {
+            user.active = 'Active';
+            console.log(user);
+            user.save(function (err, user) {
+                if (err) throw err;
+                console.log(user.username + " has been verified.");
+            });
+            res.json({status: "OK"})
+        } else {
+            res.json({status:"ERROR"});
         }
     });
 });
-
-async function verify(key, user_email) {
-    let found = false;
-    let tmp = false;
-    let result = Users.find({email: user_email}, function (err, users) {
-        if (err) console.error(err);
-        for (let i = 0; i < users.length; i++) {
-            if (users[i].active === 'Active') {
-                console.log(users[i]+ ' already has been activated');
-            } else if (key === 'abracadabra' || users[i].active === key) {
-                tmp = true;
-                users[i].active = 'Active';
-                found = true;
-                console.log(users[i]);
-                users[i].save(function (err, newUser) {
-                    if (err) throw err;
-                    console.log(newUser.username + " has been verified.");
-
-                });
-                // return new Promise(resolve => {resolve(found);});
-            }
-        }
-        // return new Promise(reject => {reject(false);});
-    });
-    console.log("Result = " + result);
-    if (result === null) {
-        console.log("Something is wrong during user search")
-        // console.log("User not found!")
-        // found = false;
-    } else {
-        // console.log("User has been found");
-        console.log("Found: " + found);
-        if (found) {
-            console.log("User has been verified");
-        } else {
-            console.log("User has NOT been verified");
-        }
-        // found = true;
-    }
-    console.log("Finishing verification...")
-    return found;
-}
