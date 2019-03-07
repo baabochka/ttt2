@@ -47,7 +47,7 @@ router.get('/', function(req, res, next) {
 
 function verify(key, user_email) {
     let found = false;
-    await Users.find({email: user_email}, function (err, users) {
+    Users.find({email: user_email}, function (err, users) {
         if (err) console.error(err);
         for (let i = 0; i < users.length; i++) {
             if (users[i].active === 'Active') {
