@@ -17,7 +17,7 @@
     "jquery": "^3.3.1",
     "mongoose": "^5.4.17",
     "morgan": "~1.9.0",
-    "nodemailer": "^5.1.1",
+    "nodemailer": "^7.0.7",
     "postfix": "0.0.1",
     "pug": "^2.0.3"
   }
